@@ -6,7 +6,7 @@
       <book-item v-for='book in searchedBooks' :key='book.id' :book='book'></book-item>
     </ul>
     <hr>
-    <h2>Filtered Books by Ownership</h2>
+    <h4>Filtered Books by Ownership</h4>
     <select v-model="holding">
       <option v-for="filter in filters">{{ filter }}</option>
     </select>
@@ -15,6 +15,8 @@
     </ul>
     <br><hr>
     <book-form @addBook='appendBook'></book-form>
+    <hr/>
+    <best-seller-form @addBook='appendBook'></best-seller-form>
   </div>
 </template>
 
@@ -22,6 +24,7 @@
 import _ from "lodash";
 import BookItem from "./BookItem";
 import BookForm from "./BookForm";
+import BestSellerForm from "./BestSellerForm";
 
 export default {
   name: "BookList",
@@ -56,7 +59,8 @@ export default {
   },
   components: {
     BookItem,
-    BookForm
+    BookForm,
+    BestSellerForm
   },
   computed: {
     filteredBooks() {
